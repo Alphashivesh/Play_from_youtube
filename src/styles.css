@@ -1,0 +1,494 @@
+/* --- Import Google Font --- */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+/* --- CSS Variables for Enhanced Theme --- */
+:root {
+  /* Vibrant Gradient Blues */
+  --primary-gradient-start: #4f46e5; /* Indigo 600 */
+  --primary-gradient-end: #7c3aed; /* Violet 600 */
+  --primary-color: #6366f1; /* Fallback Solid Indigo */
+  --primary-color-dark: #4338ca; /* Deeper Indigo */
+  --primary-color-light: #c7d2fe; /* Light Indigo */
+  --primary-color-subtle: #e0e7ff; /* Very Light Indigo */
+
+  /* Neutral Grays (Cooler Tone) */
+  --text-primary: #111827; /* Gray 900 */
+  --text-secondary: #4b5563; /* Gray 600 */
+  --text-muted: #9ca3af; /* Gray 400 */
+  --bg-light: #f9fafb; /* Gray 50 */
+  --bg-medium: #f3f4f6; /* Gray 100 */
+  --bg-app: #f3f4f6; /* Use slightly darker bg */
+  --border-color: #e5e7eb; /* Gray 200 */
+
+  /* Accent Colors */
+  --error-color: #dc2626; /* Red 600 */
+  --error-bg: #fee2e2; /* Red 100 */
+  --success-color: #16a34a; /* Green 600 */
+
+  /* Shadows (Softer & Layered) */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07),
+    0 2px 4px -2px rgb(0 0 0 / 0.07);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08),
+    0 4px 6px -4px rgb(0 0 0 / 0.08);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-inset: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+
+  /* Borders & Radius */
+  --border-radius-sm: 0.375rem; /* 6px */
+  --border-radius-md: 0.5rem; /* 8px */
+  --border-radius-lg: 0.75rem; /* 12px */
+  --border-radius-xl: 1rem; /* 16px */
+
+  /* Typography */
+  --font-sans: "Inter", sans-serif; /* Switch to Inter */
+  --transition-fast: all 0.15s ease-in-out;
+  --transition-base: all 0.25s ease-in-out;
+}
+
+/* --- General Styles --- */
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-app);
+  margin: 0;
+  padding: 20px;
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-container {
+  max-width: 1200px; /* Wider container */
+  margin: 40px auto;
+  background-color: #ffffff;
+  border-radius: var(--border-radius-xl); /* More rounded */
+  box-shadow: var(--shadow-xl); /* Stronger shadow */
+  overflow: hidden;
+  border: 1px solid var(--border-color); /* Subtle border */
+}
+
+h1,
+h2 {
+  color: var(--text-primary);
+  font-weight: 700; /* Bolder */
+}
+
+h1 {
+  font-size: 1.8em;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 1.3em;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+}
+
+button {
+  cursor: pointer;
+  transition: var(--transition-base);
+  font-family: var(--font-sans);
+}
+
+/* --- Search Bar --- */
+.search-container {
+  padding: 25px 35px; /* Adjust padding */
+  /* background: linear-gradient(to right, #fdfdff, var(--bg-light)); Slightly off-white gradient */
+  background-color: #fff; /* Keep it simple white */
+  border-bottom: 1px solid var(--border-color);
+  position: relative; /* For potential pseudo-elements */
+}
+
+.search-container form {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.search-input-wrapper {
+  position: relative;
+  flex-grow: 1;
+}
+
+.search-input {
+  width: 100%;
+  padding: 14px 20px; /* Larger padding */
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color);
+  font-size: 1em;
+  font-weight: 400;
+  box-sizing: border-box;
+  background-color: var(--bg-light); /* Light input bg */
+  transition: var(--transition-base);
+  box-shadow: var(--shadow-inset);
+}
+.search-input::placeholder {
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15), var(--shadow-inset); /* Adjusted focus ring */
+}
+
+.search-button {
+  padding: 14px 30px;
+  /* Gradient background */
+  background-image: linear-gradient(
+    to right,
+    var(--primary-gradient-start) 0%,
+    var(--primary-gradient-end) 100%
+  );
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-size: 1em;
+  font-weight: 600; /* Bolder button text */
+  flex-shrink: 0;
+  line-height: inherit;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Bouncier transition */
+}
+
+.search-button:hover:not(:disabled) {
+  /* background-image: linear-gradient(to right, var(--primary-color-dark) 0%, var(--primary-gradient-start) 100%); Darker gradient */
+  filter: brightness(1.1); /* Simple brightness increase */
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px) scale(1.01); /* More lift */
+}
+.search-button:active:not(:disabled) {
+  transform: translateY(0px) scale(0.99);
+  filter: brightness(0.95);
+  box-shadow: var(--shadow-sm);
+}
+
+.search-button:disabled {
+  background-image: none; /* Remove gradient when disabled */
+  background-color: #d1d5db; /* Gray 300 */
+  color: var(--text-muted);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* --- Main Content Layout --- */
+.main-content {
+  display: flex;
+  flex-direction: row;
+  min-height: 600px; /* Adjust */
+}
+
+/* --- Track List --- */
+.track-list-container {
+  flex: 1;
+  min-width: 320px;
+  padding: 30px 25px; /* Adjust padding */
+  border-right: 1px solid var(--border-color);
+  overflow-y: auto;
+  max-height: 700px; /* Allow more height */
+  background-color: #ffffff;
+}
+
+.track-list-container h2 {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem; /* More space below heading */
+}
+
+.track-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.track-list li {
+  display: flex;
+  align-items: center;
+  padding: 10px; /* Slightly less padding inside */
+  border-bottom: none; /* Remove bottom border */
+  cursor: pointer;
+  transition: var(--transition-fast);
+  border-radius: var(--border-radius-md); /* More rounded */
+  margin-bottom: 10px; /* More space between items */
+  position: relative; /* For potential pseudo elements */
+  overflow: hidden; /* Ensure content fits */
+  border: 1px solid transparent; /* Placeholder for active border */
+}
+
+.track-list li:hover {
+  background-color: var(--bg-medium);
+  transform: scale(1.01); /* Slight scale on hover */
+  box-shadow: var(--shadow-sm);
+}
+
+.track-list li.active-track {
+  background-color: var(--primary-color-subtle);
+  color: var(--primary-color-dark);
+  font-weight: 600;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--primary-color-light); /* Accent border */
+}
+.track-list li.active-track:hover {
+  transform: scale(1.01); /* Keep hover effect */
+}
+
+.list-artwork {
+  width: 64px; /* Adjust size */
+  height: 48px;
+  object-fit: cover;
+  border-radius: var(--border-radius-sm);
+  margin-right: 15px;
+  flex-shrink: 0;
+  background-color: var(--bg-medium);
+  border: 1px solid var(--border-color);
+}
+
+.list-track-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  overflow: hidden;
+  gap: 3px;
+}
+
+.list-track-info span {
+  font-size: 0.95rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-primary);
+}
+.list-track-info small {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Dim artist on non-active items */
+.track-list li:not(.active-track) .list-track-info small {
+  color: var(--text-muted);
+}
+
+.playing-indicator {
+  margin-left: auto;
+  padding-left: 15px;
+  font-size: 1.1em; /* Larger indicator */
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  flex-shrink: 0;
+  width: 24px; /* Give it fixed width */
+  height: 24px;
+  /* background-color: rgba(99, 102, 241, 0.1); /* Subtle bg */
+  /* border-radius: 50%; */
+}
+.playing-indicator.paused {
+  color: var(--text-muted);
+  /* background-color: transparent; */
+}
+
+/* --- Music Player Area --- */
+.music-player {
+  flex: 1.8;
+  padding: 40px 50px; /* More padding */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(
+    to bottom,
+    #ffffff,
+    var(--bg-light)
+  ); /* Subtle gradient bg */
+}
+
+.music-player h1 {
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.youtube-player-area .track-info {
+  margin-bottom: 25px; /* More space */
+  width: 100%;
+}
+
+.youtube-player-area .track-info h2 {
+  margin: 10px 0 5px;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.youtube-player-area .track-info p {
+  margin: 0 0 20px 0;
+  color: var(--text-secondary);
+  font-size: 1em;
+}
+
+/* --- YouTube Player Container --- */
+.youtube-player-container {
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 */
+  position: relative;
+  max-width: 760px; /* Increase max width */
+  margin: 20px auto;
+  background-color: #000; /* Keep black bg */
+  border-radius: var(--border-radius-lg); /* More rounded */
+  overflow: hidden;
+  box-shadow: var(--shadow-xl); /* Stronger shadow */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Dark border */
+}
+
+.youtube-player-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.youtube-player-container p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #e5e7eb; /* Light Gray */
+  font-size: 1.1em;
+  font-weight: 300;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* --- YouTube ToS Warning --- */
+.youtube-tos-warning {
+  font-size: 0.8em; /* Smaller text */
+  color: var(--text-muted); /* Muted color */
+  margin-top: 30px;
+  padding: 10px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  background-color: transparent; /* No background */
+  max-width: 760px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+.youtube-tos-warning p {
+  margin: 2px 0;
+}
+.youtube-tos-warning strong {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* --- Loading/Error/Placeholder States --- */
+.loading,
+.no-results,
+.player-placeholder {
+  padding: 20px 15px;
+  color: var(--text-secondary);
+  text-align: center;
+  margin: 15px 0;
+  font-size: 1em;
+  font-weight: 300;
+}
+
+.error-message {
+  padding: 14px 20px;
+  color: var(--error-color);
+  background-color: var(--error-bg);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  border-radius: var(--border-radius-md);
+  margin: 20px 0; /* More margin */
+  text-align: center;
+  font-size: 0.95em;
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+}
+.track-list-container .error-message,
+.track-list-container .no-results,
+.track-list-container .loading {
+  text-align: center; /* Center list placeholders */
+  margin: 20px;
+  background: var(--bg-light);
+  border-radius: var(--border-radius-md);
+}
+.error-message.player-error {
+  text-align: center;
+  background-color: var(--error-bg); /* Give player error a background */
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  margin: 15px 0;
+  padding: 10px;
+}
+.error-message.api-key-error {
+  margin: 15px 0 0 0;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 900px) {
+  .main-content {
+    flex-direction: column;
+  }
+  .track-list-container {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    max-height: 45vh;
+  }
+  .music-player {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 5px;
+  }
+  .app-container {
+    margin: 5px auto;
+    border-radius: var(--border-radius-lg);
+  }
+  .search-container {
+    padding: 15px 20px;
+  }
+  .search-container form {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  .track-list-container {
+    padding: 15px;
+    max-height: 50vh;
+  }
+  .music-player {
+    padding: 20px;
+  }
+  .list-artwork {
+    width: 56px;
+    height: 42px;
+    margin-right: 12px;
+  }
+  h1 {
+    font-size: 1.5em;
+  }
+  h2 {
+    font-size: 1.15em;
+  }
+  .youtube-player-area .track-info h2 {
+    font-size: 1.1em;
+  }
+  .youtube-player-area .track-info p {
+    font-size: 0.9em;
+  }
+}
