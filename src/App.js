@@ -4,7 +4,7 @@ import "./styles.css";
 
 // --- Constants ---
 // !!! VITAL: REPLACE WITH YOUR KEY !!!
-const YOUTUBE_API_KEY = "XXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+const YOUTUBE_API_KEY = "AIzaSyB3XTdz6tu6zolwoWJLQnEt9dRBl6AEp6k";
 const YOUTUBE_SEARCH_URL = "https://www.googleapis.com/youtube/v3/search";
 
 // --- Suggestions Config ---
