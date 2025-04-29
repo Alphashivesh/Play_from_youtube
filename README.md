@@ -11,7 +11,7 @@ You are needed to add your API Key:
           (in the App.js file in order to run the app.)
 
 
-Can be directly enjoyed via: "https://play-from-youtube.vercel.app/"
+[Live Demo 🚀](https://play-from-youtube.vercel.app/)
 
 
 Project Title: React YouTube Music Player with Search & Suggestions
