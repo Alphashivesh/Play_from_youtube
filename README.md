@@ -1,8 +1,6 @@
-[Live Demo 🚀](https://play-from-youtube.vercel.app/)
-
 # 🎵 React YouTube Music Player with Search & Suggestions
 
-Live Demo 🚀 | Created with CodeSandbox
+[Live Demo 🚀](https://play-from-youtube.vercel.app/) | Created with CodeSandbox
 
 ---
 
